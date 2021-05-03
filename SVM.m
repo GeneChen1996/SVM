@@ -1,7 +1,6 @@
-%% Artificial Intelligence Homework#3
 clear
 clc
-%% ¸ê®Æ¾ã²z
+%% è³‡æ–™æ•´ç†
 load('iris.txt')
 featureSel = [3 4];
 cP = iris(iris(:,5)==2,[3,4]);
@@ -14,11 +13,11 @@ trnSet = [trnP;trnN];
 tstSet = [tstP;tstN];
 trnY   = [ones(1,25),ones(1,25)*-1]';
 tstY   = trnY;
-%% °Ñ¼Æ³]©w
+%% åƒæ•¸è¨­å®š
 ker = 'Liner RBF Polynomial';
-C = 10;%½Õ¾ãC = 10, 100
-S = 5;%½Õ¾ãS = 5, 1, 0.5, 0.1, 0.05
-p = 7;%½Õ¾ãP = 2, 4, 6 
+C = 10;%èª¿æ•´C = 10, 100
+S = 5;%èª¿æ•´S = 5, 1, 0.5, 0.1, 0.05
+p = 7;%èª¿æ•´P = 2, 4, 6 
 %% Quadratic Programming
 L = length(trnY);
 for a = 1:L
@@ -40,8 +39,7 @@ alpha1(alpha1<   sqrt(eps) ) = 0;
 alpha1(alpha1>(C-sqrt(eps))) = C;
 %% Support Vector Machine
 %=========================================================================%
-%   ±µÄò¤G¦¸³W¹º©Ò¨D±o¤§alpha­pºâbias¡A§Y¥i±o¨ìSVM¤§¼Ò«¬
-%   ¦¹¶¥¬qµ{¦¡½X½Ğ¦Û¦æ¹ê²{
+%   æ¥çºŒäºŒæ¬¡è¦åŠƒæ‰€æ±‚å¾—ä¹‹alphaè¨ˆç®—biasï¼Œå³å¯å¾—åˆ°SVMä¹‹æ¨¡å‹
 %=========================================================================%
 SV1 = find((alpha1 > 0) & (alpha1 < C));
 
@@ -94,9 +92,8 @@ for a =1:size(xy,1)
 end
         
 %=========================================================================%
-% Åª¨údemo¥ÎªºSVMµ²ªG¡A¦¹µ²ªG¬°¤W­zxy±a¤JSVM¼Ò«¬«á§P§Oªºdecision results
-% ¸Óµ²ªG±Ä¥Îrbf-based SVM¡AC = 10¡Asigma = 0.1
-% ¦¹¶¥¬qµ{¦¡½X½Ğ¦Û¦æ¹ê²{
+% è®€å–demoç”¨çš„SVMçµæœï¼Œæ­¤çµæœç‚ºä¸Šè¿°xyå¸¶å…¥SVMæ¨¡å‹å¾Œåˆ¤åˆ¥çš„decision results
+% è©²çµæœæ¡ç”¨rbf-based SVMï¼ŒC = 10ï¼Œsigma = 0.1
 %load('demoDecisionResult_rbf_C10_S1E-1')
 %=========================================================================%
 colorClass = D*-0.5+1.5;
@@ -106,7 +103,7 @@ clf
 image(xx(1,:),yy(:,1),Hyperplane)
 colormap([1,.4,.4;.4,.4,1]);
 set(gca,'YDir','normal');
-title(['²Ä¤@¦¸ÅçÃÒPanelty weight = ',num2str(C),', kernal parameter (sigma/p) = ',num2str(p)])
+title(['ç¬¬ä¸€æ¬¡é©—è­‰Panelty weight = ',num2str(C),', kernal parameter (sigma/p) = ',num2str(p)])
 hold on
 plot(trnP(:,1),trnP(:,2),'ks','markerface','r','LineWidth',1,'MarkerSize',10)
 plot(trnN(:,1),trnN(:,2),'ks','markerface','b','LineWidth',1,'MarkerSize',10)
@@ -116,8 +113,8 @@ legend('Class2 - Training set','Class3 - Training set',...
     'Class2 - Test set','Class3 - Test set','Location','southeast')
 
 
-%%=============================¥æ¤eÅçÃÒ==================================%%
-%% ¸ê®Æ¾ã²z
+%%=============================äº¤å‰é©—è­‰==================================%%
+%% è³‡æ–™æ•´ç†
 load('iris.txt')
 featureSel = [3 4];
 cP = iris(iris(:,5)==2,[3,4]);
@@ -200,12 +197,7 @@ for a =1:size(xy,1)
     D(a,1) = sign(sumtemp + bias2);
 end
         
-%=========================================================================%
-% Åª¨údemo¥ÎªºSVMµ²ªG¡A¦¹µ²ªG¬°¤W­zxy±a¤JSVM¼Ò«¬«á§P§Oªºdecision results
-% ¸Óµ²ªG±Ä¥Îrbf-based SVM¡AC = 10¡Asigma = 0.1
-% ¦¹¶¥¬qµ{¦¡½X½Ğ¦Û¦æ¹ê²{
-%load('demoDecisionResult_rbf_C10_S1E-1')
-%=========================================================================%
+
 colorClass = D*-0.5+1.5;
 Hyperplane = reshape(colorClass,size(xx));
 figure(2)
@@ -213,7 +205,7 @@ clf
 image(xx(1,:),yy(:,1),Hyperplane)
 colormap([1,.4,.4;.4,.4,1]);
 set(gca,'YDir','normal');
-title(['²Ä¤G¦¸ÅçÃÒPanelty weight = ',num2str(C),', kernal parameter (sigma/p) = ',num2str(p)])
+title(['ç¬¬äºŒæ¬¡é©—è­‰Panelty weight = ',num2str(C),', kernal parameter (sigma/p) = ',num2str(p)])
 hold on
 plot(trnP(:,1),trnP(:,2),'ks','markerface','r','LineWidth',1,'MarkerSize',10)
 plot(trnN(:,1),trnN(:,2),'ks','markerface','b','LineWidth',1,'MarkerSize',10)
@@ -224,11 +216,11 @@ legend('Class2 - Training set','Class3 - Training set',...
 
 
 
-fprintf('²Ä¤@¦¸¤ÀÃş²vCR1 = %2.4f%%\n', CR1*100);
-fprintf('²Ä¤G¦¸¤ÀÃş²vCR2 = %2.4f%%\n', CR2*100);
+fprintf('ç¬¬ä¸€æ¬¡åˆ†é¡ç‡CR1 = %2.4f%%\n', CR1*100);
+fprintf('ç¬¬äºŒæ¬¡åˆ†é¡ç‡CR2 = %2.4f%%\n', CR2*100);
 
 CR = (CR1+CR2)/2;
-fprintf('¥­§¡¤ÀÃş²vCR = %2.4f%%\n', CR*100);
+fprintf('å¹³å‡åˆ†é¡ç‡CR = %2.4f%%\n', CR*100);
 
 
 
